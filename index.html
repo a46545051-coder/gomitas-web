@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gomitas S.A. de C.V. - Pequeños momentos, grandes sonrisas.">
+<title>Gomitas S.A. de C.V.</title>
+<style>
+:root{
+  --pink:#ff3f91;--yellow:#ffd83d;--green:#58d68d;--purple:#7b4cff;
+  --dark:#252238;--cream:#fff9f2;--white:#fff;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--dark)}
+header{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 3px 15px #0002}
+.nav{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.35rem;color:var(--pink)}
+.logo-bear{width:42px;height:42px;border-radius:45% 45% 38% 38%;background:var(--pink);position:relative;box-shadow:inset -5px -5px #d82471}
+.logo-bear:before,.logo-bear:after{content:"";position:absolute;top:-6px;width:17px;height:17px;border-radius:50%;background:var(--pink)}
+.logo-bear:before{left:2px}.logo-bear:after{right:2px}
+.logo-bear i,.logo-bear b{position:absolute;background:#fff;border-radius:50%;width:6px;height:6px;top:15px}
+.logo-bear i{left:11px}.logo-bear b{right:11px}
+nav a{color:var(--dark);text-decoration:none;font-weight:700;margin-left:17px}
+nav a:hover{color:var(--pink)}
+.cart-btn{border:0;background:var(--dark);color:#fff;padding:10px 14px;border-radius:20px;font-weight:800;cursor:pointer;margin-left:15px}
+.hero{background:linear-gradient(135deg,var(--pink),#ff76b1 48%,var(--purple));color:#fff;padding:75px 20px 85px;overflow:hidden}
+.hero-inner{max-width:1150px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,7vw,5rem);line-height:.95;margin:0 0 18px}
+.hero p{font-size:1.25rem;max-width:600px}
+.badge{display:inline-block;background:var(--yellow);color:var(--dark);font-weight:900;padding:8px 14px;border-radius:25px}
+.cta{display:inline-block;background:#fff;color:var(--pink);font-weight:900;padding:14px 22px;border-radius:30px;text-decoration:none;margin-top:10px}
+.candy-art{min-height:300px;position:relative}
+.candy{position:absolute;width:90px;height:90px;border-radius:45%;box-shadow:inset -12px -12px #0002,0 12px 25px #0002}
+.c1{background:var(--yellow);top:10px;left:25%;transform:rotate(15deg)}
+.c2{background:var(--green);top:120px;left:5%;transform:rotate(-18deg)}
+.c3{background:#ff5c66;top:180px;right:10%;transform:rotate(20deg)}
+.c4{background:#8b63ff;top:55px;right:12%;transform:rotate(-12deg)}
+section{padding:65px 20px}
+.container{max-width:1150px;margin:auto}
+.title{text-align:center;margin:0 0 10px;font-size:2.2rem}
+.subtitle{text-align:center;margin:0 auto 35px;max-width:700px;color:#666}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border-radius:24px;padding:20px;box-shadow:0 7px 25px #00000012;transition:.2s;position:relative}
+.card:hover{transform:translateY(-5px)}
+.product-img{height:170px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:75px;margin-bottom:15px}
+.pinkbg{background:#ffd7e9}.yellowbg{background:#fff0ad}.greenbg{background:#d8f8e6}
+.purplebg{background:#e3dcff}.bluebg{background:#d8efff}.orangebg{background:#ffe0bf}
+.card h3{margin:7px 0}.price{font-size:1.3rem;font-weight:900;color:var(--pink)}
+.card button,.buy{border:0;background:var(--pink);color:#fff;padding:11px 15px;border-radius:22px;font-weight:800;cursor:pointer}
+.card button:hover,.buy:hover{background:#df2174}
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-box{background:linear-gradient(135deg,#fff0f7,#f2edff);border-radius:28px;padding:30px}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}
+.person{background:#fff;padding:15px;border-radius:17px;box-shadow:0 4px 15px #0001}
+.person strong{display:block;color:var(--purple)}
+.contact{background:linear-gradient(135deg,#fff3a8,#d7f7e5)}
+form{max-width:650px;margin:auto;background:#fff;padding:25px;border-radius:25px;box-shadow:0 7px 25px #0001}
+input,textarea{width:100%;padding:13px;margin:7px 0 14px;border:2px solid #eee;border-radius:12px;font:inherit}
+textarea{min-height:120px;resize:vertical}
+form button{background:var(--purple);color:#fff;border:0;padding:13px 22px;border-radius:22px;font-weight:900;cursor:pointer}
+footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;align-items:center;justify-content:center;padding:15px}
+.modal.show{display:flex}
+.modal-box{background:#fff;border-radius:25px;max-width:600px;width:100%;max-height:90vh;overflow:auto;padding:25px}
+.modal-head{display:flex;justify-content:space-between;align-items:center}
+.close{background:#eee;border:0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}
+.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:12px 0;align-items:center}
+.qty button{border:0;background:#eee;border-radius:8px;width:30px;height:30px;cursor:pointer;font-weight:bold}
+.total{font-size:1.4rem;font-weight:900;text-align:right;margin:20px 0}
+.checkout{width:100%;background:var(--green);border:0;padding:14px;border-radius:20px;font-weight:900;cursor:pointer;font-size:1rem}
+.notice{background:#fff4c2;border-left:5px solid #e6b800;padding:12px;border-radius:10px;margin:15px 0;font-weight:700}
+@media(max-width:800px){
+ nav a{display:none}.hero-inner,.about-grid{grid-template-columns:1fr}
+ .candy-art{min-height:230px}.products{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ .products{grid-template-columns:1fr}.people{grid-template-columns:1fr}
+ section{padding:48px 15px}.hero{padding:55px 15px}
+ .hero h1{font-size:3rem}.nav{padding:10px 12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#inicio" class="logo"><span class="logo-bear"><i></i><b></b></span>Gomitas</a>
+    <nav>
+      <a href="#productos">Productos</a>
+      <a href="#empresa">Empresa</a>
+      <a href="#contacto">Contacto</a>
+      <button class="cart-btn" onclick="openCart()">🛒 Carrito (<span id="count">0</span>)</button>
+    </nav>
+    <button class="cart-btn" onclick="openCart()">🛒 <span id="countMobile">0</span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="hero-inner">
+  <div>
+   <span class="badge">🍬 Calidad que se disfruta</span>
+   <h1>Pequeños momentos,<br>grandes sonrisas.</h1>
+   <p>Somos <strong>Gomitas S.A. de C.V.</strong>, una empresa dedicada a la fabricación y venta de gomitas de alta calidad.</p>
+   <a class="cta" href="#productos">Ver productos ✨</a>
+  </div>
+  <div class="candy-art" aria-hidden="true">
+   <div class="candy c1"></div><div class="candy c2"></div><div class="candy c3"></div><div class="candy c4"></div>
+  </div>
+ </div>
+</section>
+
+<section id="productos">
+ <div class="container">
+  <h2 class="title">🍭 Todo lo que vendemos</h2>
+  <p class="subtitle">Elige tus gomitas favoritas y agrégalas al carrito.</p>
+  <div class="products" id="products"></div>
+ </div>
+</section>
+
+<section class="about" id="empresa">
+ <div class="container">
+  <h2 class="title">💖 Conócenos</h2>
+  <p class="subtitle">Una empresa creada para convertir cada pequeño momento en una gran sonrisa.</p>
+  <div class="about-grid">
+   <div class="about-box">
+    <h3>Gomitas S.A. de C.V.</h3>
+    <p>Nos dedicamos a la fabricación y venta de gomitas de alta calidad, buscando ofrecer productos divertidos, deliciosos y con una presentación atractiva.</p>
+    <div class="people">
+      <div class="person"><strong>Gerente</strong>Abraham Jiménez Velasco</div>
+      <div class="person"><strong>Subgerente</strong>Pedro Alonzo Vargas López</div>
+      <div class="person"><strong>Ventas</strong>Juan Diego Pedraso Pérez</div>
+      <div class="person"><strong>Ventas</strong>Stefani Lopez Roblero</div>
+    </div>
+   </div>
+   <div class="about-box">
+    <h3>🍬 Nuestra misión</h3>
+    <p>Crear momentos de alegría mediante gomitas de gran calidad, con una atención cercana y una experiencia de compra sencilla.</p>
+    <h3>🌟 Nuestra visión</h3>
+    <p>Ser una marca reconocida por su creatividad, sabor y compromiso con nuestros clientes.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="contacto" class="contact">
+ <div class="container">
+  <h2 class="title">📩 Contáctanos</h2>
+  <p class="subtitle">¿Tienes alguna pregunta? Envíanos un mensaje.</p>
+  <form onsubmit="sendMessage(event)">
+   <label>Nombre</label><input id="name" required placeholder="Tu nombre">
+   <label>Correo</label><input id="email" type="email" required placeholder="tu@correo.com">
+   <label>Mensaje</label><textarea id="message" required placeholder="Escribe tu mensaje..."></textarea>
+   <button type="submit">Enviar mensaje ✨</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <strong>Gomitas S.A. de C.V.</strong><br>
+ Pequeños momentos, grandes sonrisas. 🍬<br><br>
+ © 2026 Gomitas S.A. de C.V.
+</footer>
+
+<div class="modal" id="cartModal" onclick="if(event.target===this)closeCart()">
+ <div class="modal-box">
+  <div class="modal-head"><h2>🛒 Tu carrito</h2><button class="close" onclick="closeCart()">×</button></div>
+  <div id="cartItems"></div>
+  <div class="total">Total: $<span id="total">0.00</span> MXN</div>
+  <div class="notice">ℹ️ Este sitio forma parte de un <strong>proyecto ficticio</strong> escolar. No se realizan cobros reales.</div>
+  <button class="checkout" onclick="checkout()">Finalizar compra</button>
+ </div>
+</div>
+
+<script>
+const products=[
+ {id:1,name:"Ositos Frutales",price:35,emoji:"🐻",bg:"pinkbg",desc:"Suaves y llenos de sabor."},
+ {id:2,name:"Aros de Durazno",price:38,emoji:"🍑",bg:"yellowbg",desc:"Dulces, suaves y deliciosos."},
+ {id:3,name:"Gusanos Ácidos",price:40,emoji:"🐛",bg:"greenbg",desc:"Un toque ácido irresistible."},
+ {id:4,name:"Corazones",price:42,emoji:"💗",bg:"purplebg",desc:"Perfectos para compartir."},
+ {id:5,name:"Frutitas",price:36,emoji:"🍓",bg:"orangebg",desc:"Variedad de sabores frutales."},
+ {id:6,name:"Estrellitas",price:39,emoji:"⭐",bg:"yellowbg",desc:"Pequeñas estrellas de sabor."},
+ {id:7,name:"Sandías",price:37,emoji:"🍉",bg:"greenbg",desc:"Sabor fresco y divertido."},
+ {id:8,name:"Cola",price:41,emoji:"🥤",bg:"purplebg",desc:"Clásicas gomitas sabor cola."},
+ {id:9,name:"Mix Arcoíris",price:49,emoji:"🌈",bg:"bluebg",desc:"Una mezcla de colores y sabores."},
+ {id:10,name:"Mega Gomitas",price:55,emoji:"🍬",bg:"pinkbg",desc:"Para los verdaderos amantes de las gomitas."}
+];
+let cart=JSON.parse(localStorage.getItem("gomitasCart")||"[]");
+
+function renderProducts(){
+ document.getElementById("products").innerHTML=products.map(p=>`
+ <article class="card">
+  <div class="product-img ${p.bg}">${p.emoji}</div>
+  <h3>${p.name}</h3><p>${p.desc}</p>
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+   <span class="price">$${p.price.toFixed(2)}</span>
+   <button onclick="addToCart(${p.id})">Agregar 🛒</button>
+  </div>
+ </article>`).join("");
+}
+function addToCart(id){
+ const item=cart.find(x=>x.id===id);
+ if(item)item.qty++; else cart.push({id,qty:1});
+ saveCart();openCart();
+}
+function saveCart(){
+ localStorage.setItem("gomitasCart",JSON.stringify(cart));
+ updateCount();renderCart();
+}
+function updateCount(){
+ const n=cart.reduce((s,x)=>s+x.qty,0);
+ document.getElementById("count").textContent=n;
+ document.getElementById("countMobile").textContent=n;
+}
+function renderCart(){
+ const box=document.getElementById("cartItems");
+ if(!cart.length){box.innerHTML="<p style='text-align:center;padding:25px'>Tu carrito está vacío 🍬</p>";document.getElementById("total").textContent="0.00";return}
+ let total=0;
+ box.innerHTML=cart.map(item=>{
+  const p=products.find(x=>x.id===item.id);const sub=p.price*item.qty;total+=sub;
+  return `<div class="cart-item"><div><strong>${p.emoji} ${p.name}</strong><br>$${p.price.toFixed(2)} c/u</div>
+  <div class="qty"><button onclick="changeQty(${p.id},-1)">−</button> ${item.qty} <button onclick="changeQty(${p.id},1)">+</button></div>
+  <strong>$${sub.toFixed(2)}</strong></div>`;
+ }).join("");
+ document.getElementById("total").textContent=total.toFixed(2);
+}
+function changeQty(id,delta){
+ const item=cart.find(x=>x.id===id);if(!item)return;
+ item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+ saveCart();
+}
+function openCart(){document.getElementById("cartModal").classList.add("show");renderCart()}
+function closeCart(){document.getElementById("cartModal").classList.remove("show")}
+function checkout(){
+ if(!cart.length){alert("Tu carrito está vacío.");return}
+ alert("¡Gracias por tu compra! 🍬\\n\\nEste es un proyecto ficticio escolar. No se realizó ningún cobro real.");
+ cart=[];saveCart();closeCart();
+}
+function sendMessage(e){
+ e.preventDefault();
+ alert("¡Mensaje enviado! ✨ Gracias por contactar a Gomitas.");
+ e.target.reset();
+}
+renderProducts();updateCount();renderCart();
+</script>
+</body>
+</html>
